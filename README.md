@@ -7,6 +7,15 @@ It provides a unified, backend-agnostic foundation for building secure m-of-n fe
 
 It also carries the handful of framework-agnostic utilities that every app needs but that don't belong in `asterism-core` (env-var + hex helpers).
 
+> [!WARNING]
+> ## 🚧 Under Active Development — Not Ready for Use 🚧
+>
+> **This crate is a work in progress and is NOT yet ready for production or general use.**
+> APIs, features, and behavior may change without notice, and breakage is expected.
+>
+>
+> ⛔️ **Feel free to play around with the crate but if you need to store real money please come back soon.**
+
 ## The library family
 
 | Crate | Role | Repository |
