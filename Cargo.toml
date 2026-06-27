@@ -3,6 +3,7 @@ name = "asterism"
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
+repository = "https://github.com/gmikeska/asterism"
 description = "Umbrella/facade crate for the Emerald multi-signature custody platform: namespaced re-exports of asterism-core and the signer/network backends behind feature gates."
 
 [lib]
