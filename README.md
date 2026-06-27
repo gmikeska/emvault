@@ -1,6 +1,7 @@
-# asterism
+![Asterism](https://github.com/gmikeska/asterism/blob/master/asterism.jpg?raw=true)
+# Asterism
 
-Wrapper crate for the asterism multi-signature custody architecture.
+Wrapper crate for the Asterism multi-signature custody architecture.
 
 It provides a unified, backend-agnostic foundation for building secure m-of-n federations that can mix consumer hardware wallets (Trezor, Ledger, etc.. any signer that can export a BIP-48 XPUB and sign a P2WSH sortedmulti PSBT) with HSMs (via PKCS#11) in the same federation. Asterism handles descriptor construction, heterogeneous signing coordination, federation mutation, efficient multi-account migrations, recovery templates, and policy enforcement — while staying a pure library with no runtime or network ownership.
 
