@@ -16,6 +16,24 @@ It also carries the handful of framework-agnostic utilities that every app needs
 >
 > ⛔️ **Feel free to play around with the crate but if you need to store real money please come back soon.**
 
+
+## 📦 Demo Implementations
+
+Want to see `asterism` wired into a real application? Two reference web apps
+exercise the library end-to-end and are the fastest way to learn the API:
+
+- **[test-app-xpub](https://github.com/gmikeska/test-app-xpub)** — self-custody,
+  multi-party signing. Users bring their own hardware wallet, onboard an XPUB,
+  and co-sign m-of-n P2WSH transactions through a proposal lifecycle.
+
+- **[test-app-pkcs11](https://github.com/gmikeska/test-app-pkcs11)** — custodial
+  HSM-backed wallets. A federation of HSMs signs every spend server-side, across
+  both Bitcoin and Elements/Liquid.
+
+Each repo ships a `FEATURES.md` that maps every capability to the source symbol
+that implements it — start there.
+
+
 ## The library family
 
 | Crate | Role | Repository |
