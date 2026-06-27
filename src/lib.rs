@@ -77,14 +77,14 @@ pub mod dev_signer {
 pub mod prelude {
     pub use asterism_core::{
         BtcFederatedWallet, BuiltFederation, DescriptorBuilder, FederatedWallet, Federation,
-        FinalizedPsbt, NetworkType, SigningAction, SigningCoordinator, SigningRequest, UnsignedPsbt,
-        build_federation,
+        FinalizedPsbt, NetworkType, SigningAction, SigningCoordinator, SigningRequest,
+        UnsignedPsbt, build_federation,
     };
 
-    #[cfg(feature = "xpub")]
-    pub use asterism_xpub::ExternalSigner;
-    #[cfg(feature = "pkcs11")]
-    pub use asterism_pkcs11::{Pkcs11Config, Pkcs11Signer};
     #[cfg(feature = "elements")]
     pub use asterism_elements::{ElementsSigner, ElementsWollet};
+    #[cfg(feature = "pkcs11")]
+    pub use asterism_pkcs11::{Pkcs11Config, Pkcs11Signer};
+    #[cfg(feature = "xpub")]
+    pub use asterism_xpub::ExternalSigner;
 }
