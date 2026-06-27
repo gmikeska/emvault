@@ -28,11 +28,11 @@ test-utils = ["asterism-core/test-utils", "asterism-xpub?/test-utils", "asterism
 
 [dependencies]
 thiserror = "2"
-asterism-core       = { path = "../asterism-core" }
-asterism-xpub       = { path = "../asterism-xpub",       optional = true }
-asterism-pkcs11     = { path = "../asterism-pkcs11",     optional = true }
-asterism-elements   = { path = "../asterism-elements",   optional = true }
-asterism-dev-signer = { path = "../asterism-dev-signer", optional = true }
+asterism-core       = { version = "0.1.0", path = "../asterism-core" }
+asterism-xpub       = { version = "0.1.0", path = "../asterism-xpub",       optional = true }
+asterism-pkcs11     = { version = "0.1.0", path = "../asterism-pkcs11",     optional = true }
+asterism-elements   = { version = "0.1.0", path = "../asterism-elements",   optional = true }
+asterism-dev-signer = { version = "0.1.0", path = "../asterism-dev-signer", optional = true }
 
 [lints.clippy]
 pedantic = { level = "warn", priority = -1 }

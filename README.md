@@ -1,14 +1,10 @@
 # asterism
 
-Umbrella **facade** crate for the Emerald multi-signature custody platform.
-`asterism` owns no domain logic of its own — it re-exports
-[`asterism-core`](https://github.com/gmikeska/asterism-core) and the
-feature-gated signer/network backends under stable, collision-free namespaces,
-so a consuming application can depend on a **single crate** (`asterism`) as its
-public API surface instead of reaching into each sub-crate individually.
+Wrapper crate for the asterism multi-signature custody architecture.
 
-It also carries the handful of framework-agnostic utilities that every app
-needs but that don't belong in `asterism-core` (env-var + hex helpers).
+It provides a unified, backend-agnostic foundation for building secure m-of-n federations that can mix consumer hardware wallets (Trezor, Ledger, etc.. any signer that can export a BIP-48 XPUB and sign a P2WSH sortedmulti PSBT) with HSMs (via PKCS#11) in the same federation. Asterism handles descriptor construction, heterogeneous signing coordination, federation mutation, efficient multi-account migrations, recovery templates, and policy enforcement — while staying a pure library with no runtime or network ownership.
+
+It also carries the handful of framework-agnostic utilities that every app needs but that don't belong in `asterism-core` (env-var + hex helpers).
 
 ## The library family
 
