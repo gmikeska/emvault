@@ -2,5 +2,35 @@
 name = "asterism"
 version = "0.1.0"
 edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "Umbrella/facade crate for the Emerald multi-signature custody platform: namespaced re-exports of asterism-core and the signer/network backends behind feature gates."
+
+[lib]
+name = "asterism"
+path = "src/lib.rs"
+
+[features]
+default = []
+xpub       = ["dep:asterism-xpub"]
+pkcs11     = ["dep:asterism-pkcs11"]
+# Enabling `elements` turns on the Elements/Liquid surface in core, pulls in the
+# `asterism-elements` companion crate, and — only if `pkcs11` is also enabled —
+# activates the HSM's Elements signing path. The `?/` weak-dep syntax means
+# `pkcs11` is NOT implied by `elements`; it only forwards the feature when the
+# pkcs11 backend is already in the build.
+elements   = ["dep:asterism-elements", "asterism-core/elements", "asterism-pkcs11?/elements"]
+dev-signer = ["dep:asterism-dev-signer", "pkcs11"]
+# Surface test scaffolding (MockSigner, fixtures, Elements testkit) to
+# downstream test suites. Weak-dep forwarding keeps it inert for backends that
+# aren't part of the build.
+test-utils = ["asterism-core/test-utils", "asterism-xpub?/test-utils", "asterism-elements?/test-utils"]
 
 [dependencies]
+asterism-core       = { path = "../asterism-core" }
+asterism-xpub       = { path = "../asterism-xpub",       optional = true }
+asterism-pkcs11     = { path = "../asterism-pkcs11",     optional = true }
+asterism-elements   = { path = "../asterism-elements",   optional = true }
+asterism-dev-signer = { path = "../asterism-dev-signer", optional = true }
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
