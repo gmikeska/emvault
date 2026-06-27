@@ -40,6 +40,12 @@
 
 #![forbid(unsafe_code)]
 
+/// Framework-agnostic configuration + hex helpers shared by consuming apps
+/// ([`ConfigError`](config::ConfigError), [`require`](config::require),
+/// [`optional`](config::optional), [`hex_decode`](config::hex_decode),
+/// [`hex_encode`](config::hex_encode)). Always available — no backend feature.
+pub mod config;
+
 /// Backend-agnostic core: [`Federation`](asterism_core::Federation),
 /// [`SigningCoordinator`](asterism_core::SigningCoordinator), descriptors,
 /// chain-sync (`chain_sync`), the PSBT primitives (`psbt`), migration,
