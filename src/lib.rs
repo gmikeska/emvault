@@ -1,9 +1,9 @@
-//! # asterism
+//! # emvault
 //!
 //! Umbrella **facade** for the Emerald multi-signature custody platform. This
-//! crate owns no logic of its own; it re-exports [`asterism-core`](asterism_core)
+//! crate owns no logic of its own; it re-exports [`emvault-core`](emvault_core)
 //! and the feature-gated signer/network backends under stable namespaces so a
-//! consuming application can depend on a single crate (`asterism`) as its public
+//! consuming application can depend on a single crate (`emvault`) as its public
 //! API surface instead of reaching into the individual sub-crates.
 //!
 //! ## Feature gates
@@ -24,14 +24,14 @@
 //!
 //! ```toml
 //! # Bitcoin-only consumer hardware wallets:
-//! asterism = { path = "../asterism", features = ["xpub"] }
+//! emvault = { path = "../emvault", features = ["xpub"] }
 //! # HSM federation with Elements + dev helpers:
-//! asterism = { path = "../asterism", features = ["pkcs11", "elements", "dev-signer"] }
+//! emvault = { path = "../emvault", features = ["pkcs11", "elements", "dev-signer"] }
 //! ```
 //!
 //! ## Why namespaced modules (not a flat glob)
 //!
-//! `asterism-core` and `asterism-elements` both expose `descriptor`, `error`,
+//! `emvault-core` and `emvault-elements` both expose `descriptor`, `error`,
 //! `network`, and `federated_wallet` modules and overlapping item names
 //! (`to_multipath_string`, `NetworkType` vs `ElementsNetwork`, `KeyMode` vs
 //! `CtKeyMode`). A flat `pub use ::*` of every backend would collide, so each
@@ -46,51 +46,51 @@
 /// [`hex_encode`](config::hex_encode)). Always available — no backend feature.
 pub mod config;
 
-/// Backend-agnostic core: [`Federation`](asterism_core::Federation),
-/// [`SigningCoordinator`](asterism_core::SigningCoordinator), descriptors,
+/// Backend-agnostic core: [`Federation`](emvault_core::Federation),
+/// [`SigningCoordinator`](emvault_core::SigningCoordinator), descriptors,
 /// chain-sync (`chain_sync`), the PSBT primitives (`psbt`), migration,
 /// recovery, and snapshot. Always available.
 pub mod core {
-    pub use asterism_core::*;
+    pub use emvault_core::*;
 }
 
 /// XPUB signer backend for consumer hardware wallets (Trezor, Jade, Ledger, …).
 #[cfg(feature = "xpub")]
 pub mod xpub {
-    pub use asterism_xpub::*;
+    pub use emvault_xpub::*;
 }
 
 /// PKCS#11 / HSM signer backend.
 #[cfg(feature = "pkcs11")]
 pub mod pkcs11 {
-    pub use asterism_pkcs11::*;
+    pub use emvault_pkcs11::*;
 }
 
 /// Elements/Liquid support: confidential descriptors, PSET, wollet, LWK sync.
 #[cfg(feature = "elements")]
 pub mod elements {
-    pub use asterism_elements::*;
+    pub use emvault_elements::*;
 }
 
-/// Dev/CI HSM helper that pairs with `libasterism_dev_hsm`.
+/// Dev/CI HSM helper that pairs with `libemvault_dev_hsm`.
 #[cfg(feature = "dev-signer")]
 pub mod dev_signer {
-    pub use asterism_dev_signer::*;
+    pub use emvault_dev_signer::*;
 }
 
 /// One import for the types most consumers touch. Backend-specific entries are
 /// feature-gated to match the enabled namespaces.
 pub mod prelude {
-    pub use asterism_core::{
+    pub use emvault_core::{
         BtcFederatedWallet, BuiltFederation, DescriptorBuilder, FederatedWallet, Federation,
         FinalizedPsbt, NetworkType, SigningAction, SigningCoordinator, SigningRequest,
         UnsignedPsbt, build_federation,
     };
 
     #[cfg(feature = "elements")]
-    pub use asterism_elements::{ElementsSigner, ElementsWollet};
+    pub use emvault_elements::{ElementsSigner, ElementsWollet};
     #[cfg(feature = "pkcs11")]
-    pub use asterism_pkcs11::{Pkcs11Config, Pkcs11Signer};
+    pub use emvault_pkcs11::{Pkcs11Config, Pkcs11Signer};
     #[cfg(feature = "xpub")]
-    pub use asterism_xpub::ExternalSigner;
+    pub use emvault_xpub::ExternalSigner;
 }

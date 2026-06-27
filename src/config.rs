@@ -1,7 +1,7 @@
 //! Framework-agnostic configuration + hex helpers shared by the consuming apps.
 //!
 //! These utilities are not Bitcoin-specific (so they don't belong in
-//! `asterism-core`) but were duplicated byte-for-byte across every app's
+//! `emvault-core`) but were duplicated byte-for-byte across every app's
 //! `config.rs`. They live here, always available (no backend feature needed),
 //! so each app loads its own `AppConfig` from the environment using one shared
 //! set of primitives instead of re-implementing them.

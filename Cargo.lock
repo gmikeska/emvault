@@ -66,98 +66,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f02882884d3e1bc524fb12c79f107f6ad0e1cfd498c536ffb494301740995dfe"
 
 [[package]]
-name = "asterism"
-version = "0.1.0"
-dependencies = [
- "asterism-core",
- "asterism-dev-signer",
- "asterism-elements",
- "asterism-pkcs11",
- "asterism-xpub",
- "thiserror",
-]
-
-[[package]]
-name = "asterism-core"
-version = "0.1.0"
-dependencies = [
- "bdk_bitcoind_rpc",
- "bdk_wallet",
- "bitcoin",
- "bitcoincore-rpc",
- "hex",
- "miniscript",
- "serde",
- "serde_json",
- "serde_with",
- "sha2",
- "thiserror",
- "uuid",
-]
-
-[[package]]
-name = "asterism-dev-signer"
-version = "0.1.0"
-dependencies = [
- "asterism-core",
- "asterism-pkcs11",
- "bitcoin",
- "cryptoki",
- "dotenvy",
- "hex",
- "log",
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "asterism-elements"
-version = "0.1.0"
-dependencies = [
- "asterism-core",
- "bitcoin",
- "bitcoincore-rpc",
- "elements 0.25.3",
- "elements-miniscript",
- "lwk_common",
- "lwk_wollet",
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "asterism-pkcs11"
-version = "0.1.0"
-dependencies = [
- "asterism-core",
- "asterism-elements",
- "bdk_wallet",
- "bitcoin",
- "cryptoki",
- "elements 0.25.3",
- "hex",
- "miniscript",
- "secrecy",
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "asterism-xpub"
-version = "0.1.0"
-dependencies = [
- "asterism-core",
- "bip39",
- "bitcoin",
- "miniscript",
- "serde",
- "thiserror",
-]
-
-[[package]]
 name = "autocfg"
 version = "1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -624,6 +532,98 @@ dependencies = [
  "elements 0.25.3",
  "miniscript",
  "serde",
+]
+
+[[package]]
+name = "emvault"
+version = "0.1.0"
+dependencies = [
+ "emvault-core",
+ "emvault-dev-signer",
+ "emvault-elements",
+ "emvault-pkcs11",
+ "emvault-xpub",
+ "thiserror",
+]
+
+[[package]]
+name = "emvault-core"
+version = "0.1.0"
+dependencies = [
+ "bdk_bitcoind_rpc",
+ "bdk_wallet",
+ "bitcoin",
+ "bitcoincore-rpc",
+ "hex",
+ "miniscript",
+ "serde",
+ "serde_json",
+ "serde_with",
+ "sha2",
+ "thiserror",
+ "uuid",
+]
+
+[[package]]
+name = "emvault-dev-signer"
+version = "0.1.0"
+dependencies = [
+ "bitcoin",
+ "cryptoki",
+ "dotenvy",
+ "emvault-core",
+ "emvault-pkcs11",
+ "hex",
+ "log",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
+name = "emvault-elements"
+version = "0.1.0"
+dependencies = [
+ "bitcoin",
+ "bitcoincore-rpc",
+ "elements 0.25.3",
+ "elements-miniscript",
+ "emvault-core",
+ "lwk_common",
+ "lwk_wollet",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
+name = "emvault-pkcs11"
+version = "0.1.0"
+dependencies = [
+ "bdk_wallet",
+ "bitcoin",
+ "cryptoki",
+ "elements 0.25.3",
+ "emvault-core",
+ "emvault-elements",
+ "hex",
+ "miniscript",
+ "secrecy",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
+name = "emvault-xpub"
+version = "0.1.0"
+dependencies = [
+ "bip39",
+ "bitcoin",
+ "emvault-core",
+ "miniscript",
+ "serde",
+ "thiserror",
 ]
 
 [[package]]
