@@ -1,4 +1,4 @@
-![Asterism](https://github.com/gmikeska/asterism/blob/master/asterism.jpg?raw=true)
+![Asterism](https://github.com/gmikeska/asterism/blob/master/emvault.jpg?raw=true)
 # Asterism
 
 Wrapper crate for the Asterism multi-signature custody architecture.
