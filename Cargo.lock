@@ -536,7 +536,7 @@ dependencies = [
 
 [[package]]
 name = "emvault"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "emvault-core",
  "emvault-dev-signer",
