@@ -1,11 +1,11 @@
-![Asterism](https://raw.githubusercontent.com/gmikeska/emvault/refs/heads/master/emvault.jpg?raw=true)
-# Asterism
+![EmVault](https://raw.githubusercontent.com/gmikeska/emvault/refs/heads/master/emvault.jpg?raw=true)
+# EmVault
 
-Wrapper crate for the Asterism multi-signature custody architecture.
+Wrapper crate for the EmVault multi-signature custody architecture.
 
-It provides a unified, backend-agnostic foundation for building secure m-of-n federations that can mix consumer hardware wallets (Trezor, Ledger, etc.. any signer that can export a BIP-48 XPUB and sign a P2WSH sortedmulti PSBT) with HSMs (via PKCS#11) in the same federation. Asterism handles descriptor construction, heterogeneous signing coordination, federation mutation, efficient multi-account migrations, recovery templates, and policy enforcement — while staying a pure library with no runtime or network ownership.
+It provides a unified, backend-agnostic foundation for building secure m-of-n federations that can mix consumer hardware wallets (Trezor, Ledger, etc.. any signer that can export a BIP-48 XPUB and sign a P2WSH sortedmulti PSBT) with HSMs (via PKCS#11) in the same federation. EmVault handles descriptor construction, heterogeneous signing coordination, federation mutation, efficient multi-account migrations, recovery templates, and policy enforcement — while staying a pure library with no runtime or network ownership.
 
-It also carries the handful of framework-agnostic utilities that every app needs but that don't belong in `asterism-core` (env-var + hex helpers).
+It also carries the handful of framework-agnostic utilities that every app needs but that don't belong in `emvault-core` (env-var + hex helpers).
 
 > [!WARNING]
 > ## 🚧 Under Active Development — Not Ready for Use 🚧
@@ -19,7 +19,7 @@ It also carries the handful of framework-agnostic utilities that every app needs
 
 ## 📦 Demo Implementations
 
-Want to see `asterism` wired into a real application? Two reference web apps
+Want to see `emvault` wired into a real application? Two reference web apps
 exercise the library end-to-end and are the fastest way to learn the API:
 
 - **[test-app-xpub](https://github.com/gmikeska/test-app-xpub)** — self-custody,
@@ -38,15 +38,15 @@ that implements it — start there.
 
 | Crate | Role | Repository |
 | ----- | ---- | ---------- |
-| `asterism-core` | Backend-agnostic core: `Signer` trait, `Federation`, descriptor builder, PSBT pipeline, migration, recovery, snapshots, roster, the shared wallet view types. | <https://github.com/gmikeska/asterism-core> |
-| `asterism-xpub` | XPUB signer backend for consumer hardware wallets (Trezor, Jade, Ledger, Coldcard, Passport). | <https://github.com/gmikeska/asterism-xpub> |
-| `asterism-pkcs11` | PKCS#11 / HSM signer backend. | <https://github.com/gmikeska/asterism-pkcs11> |
-| `asterism-elements` | Elements/Liquid support: confidential descriptors, PSET pipeline, client-side wollet, daemon RPC. | <https://github.com/gmikeska/asterism-elements> |
-| `asterism-dev-signer` | Dev/CI `HsmBackend` that pairs with `libasterism_dev_hsm`. | <https://github.com/gmikeska/asterism-dev-signer> |
+| `emvault-core` | Backend-agnostic core: `Signer` trait, `Federation`, descriptor builder, PSBT pipeline, migration, recovery, snapshots, roster, the shared wallet view types. | <https://github.com/gmikeska/emvault-core> |
+| `emvault-xpub` | XPUB signer backend for consumer hardware wallets (Trezor, Jade, Ledger, Coldcard, Passport). | <https://github.com/gmikeska/emvault-xpub> |
+| `emvault-pkcs11` | PKCS#11 / HSM signer backend. | <https://github.com/gmikeska/emvault-pkcs11> |
+| `emvault-elements` | Elements/Liquid support: confidential descriptors, PSET pipeline, client-side wollet, daemon RPC. | <https://github.com/gmikeska/emvault-elements> |
+| `emvault-dev-signer` | Dev/CI `HsmBackend` that pairs with `libemvault_dev_hsm`. | <https://github.com/gmikeska/emvault-dev-signer> |
 
 ## Why namespaced modules (not a flat glob)
 
-`asterism-core` and `asterism-elements` both expose `descriptor`, `error`,
+`emvault-core` and `emvault-elements` both expose `descriptor`, `error`,
 `network`, and `federated_wallet` modules and overlapping item names
 (`to_multipath_string`, `NetworkType` vs `ElementsNetwork`, `KeyMode` vs
 `CtKeyMode`). A flat `pub use ::*` of every backend would collide, so each crate
@@ -55,13 +55,13 @@ high-frequency, unambiguous types for the common case.
 
 | Namespace | Always on? | Backed by |
 | --------- | ---------- | --------- |
-| `asterism::core` | yes | [`asterism-core`](https://github.com/gmikeska/asterism-core) |
-| `asterism::config` | yes | this crate (env-var + hex helpers) |
-| `asterism::xpub` | `xpub` feature | [`asterism-xpub`](https://github.com/gmikeska/asterism-xpub) |
-| `asterism::pkcs11` | `pkcs11` feature | [`asterism-pkcs11`](https://github.com/gmikeska/asterism-pkcs11) |
-| `asterism::elements` | `elements` feature | [`asterism-elements`](https://github.com/gmikeska/asterism-elements) |
-| `asterism::dev_signer` | `dev-signer` feature | [`asterism-dev-signer`](https://github.com/gmikeska/asterism-dev-signer) |
-| `asterism::prelude` | yes | curated re-exports (feature-gated entries) |
+| `emvault::core` | yes | [`emvault-core`](https://github.com/gmikeska/emvault-core) |
+| `emvault::config` | yes | this crate (env-var + hex helpers) |
+| `emvault::xpub` | `xpub` feature | [`emvault-xpub`](https://github.com/gmikeska/emvault-xpub) |
+| `emvault::pkcs11` | `pkcs11` feature | [`emvault-pkcs11`](https://github.com/gmikeska/emvault-pkcs11) |
+| `emvault::elements` | `elements` feature | [`emvault-elements`](https://github.com/gmikeska/emvault-elements) |
+| `emvault::dev_signer` | `dev-signer` feature | [`emvault-dev-signer`](https://github.com/gmikeska/emvault-dev-signer) |
+| `emvault::prelude` | yes | curated re-exports (feature-gated entries) |
 
 ## Feature gates
 
@@ -71,22 +71,22 @@ HSM/Elements dependency stack):
 
 | Feature | Effect |
 | ------- | ------ |
-| `xpub` | Consumer hardware-wallet signer (`asterism::xpub`). |
-| `pkcs11` | HSM-backed signer (`asterism::pkcs11`). |
-| `elements` | Elements/Liquid support (`asterism::elements`); turns on `asterism-core/elements` and forwards the Elements feature into `pkcs11` **only if** that backend is also enabled (weak `?/` dep). |
-| `dev-signer` | Dev/CI HSM helper (`asterism::dev_signer`); implies `pkcs11`. |
+| `xpub` | Consumer hardware-wallet signer (`emvault::xpub`). |
+| `pkcs11` | HSM-backed signer (`emvault::pkcs11`). |
+| `elements` | Elements/Liquid support (`emvault::elements`); turns on `emvault-core/elements` and forwards the Elements feature into `pkcs11` **only if** that backend is also enabled (weak `?/` dep). |
+| `dev-signer` | Dev/CI HSM helper (`emvault::dev_signer`); implies `pkcs11`. |
 | `test-utils` | Exposes test scaffolding (`MockSigner`, fixtures, the Elements `testkit`) to downstream test suites. |
 
-`asterism::core` and `asterism::config` are always available.
+`emvault::core` and `emvault::config` are always available.
 
 ## Usage
 
 ```toml
 # Bitcoin-only consumer hardware wallets:
-asterism = { git = "https://github.com/gmikeska/asterism", features = ["xpub"] }
+emvault = { git = "https://github.com/gmikeska/emvault", features = ["xpub"] }
 
 # HSM federation with Elements + dev helpers:
-asterism = { git = "https://github.com/gmikeska/asterism", features = ["pkcs11", "elements", "dev-signer"] }
+emvault = { git = "https://github.com/gmikeska/emvault", features = ["pkcs11", "elements", "dev-signer"] }
 ```
 
 ### Prelude
@@ -95,23 +95,23 @@ One import for the types most consumers touch (backend-specific entries are
 feature-gated to match the enabled namespaces):
 
 ```rust,ignore
-use asterism::prelude::*;
+use emvault::prelude::*;
 // Federation, DescriptorBuilder, build_federation, BuiltFederation,
 // SigningCoordinator, UnsignedPsbt, FinalizedPsbt, NetworkType, …
 // + ExternalSigner (xpub), Pkcs11Signer (pkcs11), ElementsWollet (elements)
 ```
 
-### `asterism::config`
+### `emvault::config`
 
 Framework-agnostic helpers shared by every consuming app — always available, no
 backend feature needed:
 
 ```rust,ignore
-use asterism::config::{require, optional, hex_decode, hex_encode, ConfigError};
+use emvault::config::{require, optional, hex_decode, hex_encode, ConfigError};
 
 let secret = hex_decode(&require("APP_SESSION_SECRET")?)?;
 let manifest = optional("TREZOR_MANIFEST_EMAIL");
-# Ok::<(), asterism::config::ConfigError>(())
+# Ok::<(), emvault::config::ConfigError>(())
 ```
 
 ## Build and test
