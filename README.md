@@ -3,7 +3,7 @@
 
 Wrapper crate for the EmVault multi-signature custody architecture.
 
-It provides a unified, backend-agnostic foundation for building secure m-of-n federations that can mix consumer hardware wallets (Trezor, Ledger, etc.. any signer that can export a BIP-48 XPUB and sign a P2WSH sortedmulti PSBT) with HSMs (via PKCS#11) in the same federation. EmVault handles descriptor construction, heterogeneous signing coordination, federation mutation, efficient multi-account migrations, recovery templates, and policy enforcement — while staying a pure library with no runtime or network ownership.
+It provides a unified, backend-agnostic foundation for building secure m-of-n federations that can mix consumer hardware wallets (Trezor, Ledger, etc. — any signer that can export a BIP-48 XPUB and sign a P2WSH sortedmulti PSBT) with HSMs (via PKCS#11) in the same federation. EmVault handles descriptor construction, heterogeneous signing coordination, federation mutation, efficient multi-account migrations, and recovery templates — while staying a pure library with no runtime or network ownership.
 
 It also carries the handful of framework-agnostic utilities that every app needs but that don't belong in `emvault-core` (env-var + hex helpers).
 
@@ -44,7 +44,7 @@ that implements it — start there.
 | `emvault-elements` | Elements/Liquid support: confidential descriptors, PSET pipeline, client-side wollet, daemon RPC. | <https://github.com/gmikeska/emvault-elements> |
 | `emvault-dev-signer` | Dev/CI `HsmBackend` that pairs with `libemvault_dev_hsm`. | <https://github.com/gmikeska/emvault-dev-signer> |
 
-## Why namespaced modules (not a flat glob)
+## Why namespaced modules
 
 `emvault-core` and `emvault-elements` both expose `descriptor`, `error`,
 `network`, and `federated_wallet` modules and overlapping item names
@@ -83,10 +83,10 @@ HSM/Elements dependency stack):
 
 ```toml
 # Bitcoin-only consumer hardware wallets:
-emvault = { git = "https://github.com/gmikeska/emvault", features = ["xpub"] }
+emvault = { version = "0.1", features = ["xpub"] }
 
 # HSM federation with Elements + dev helpers:
-emvault = { git = "https://github.com/gmikeska/emvault", features = ["pkcs11", "elements", "dev-signer"] }
+emvault = { version = "0.1", features = ["pkcs11", "elements", "dev-signer"] }
 ```
 
 ### Prelude
