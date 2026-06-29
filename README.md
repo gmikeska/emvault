@@ -31,7 +31,10 @@ exercise the library end-to-end and are the fastest way to learn the API:
   both Bitcoin and Elements/Liquid.
 
 Each repo ships a `FEATURES.md` that maps every capability to the source symbol
-that implements it — start there.
+that implements it. Point your AI coding agent at a demo repo and its
+`FEATURES.md` for a complete implementation guide to the architecture — it has
+everything an agent needs to understand the full feature surface, data flow, and
+where each piece lives in the code.
 
 
 ## The library family
@@ -43,6 +46,7 @@ that implements it — start there.
 | `emvault-pkcs11` | PKCS#11 / HSM signer backend. | <https://github.com/gmikeska/emvault-pkcs11> |
 | `emvault-elements` | Elements/Liquid support: confidential descriptors, PSET pipeline, client-side wollet, daemon RPC. | <https://github.com/gmikeska/emvault-elements> |
 | `emvault-dev-signer` | Dev/CI `HsmBackend` that pairs with `libemvault_dev_hsm`. | <https://github.com/gmikeska/emvault-dev-signer> |
+| `libemvault_dev_hsm` | Software-only PKCS#11 shared library for dev/CI — see [HSM Integration](HSM_INTEGRATION.md) for how HSMs connect to EmVault. | <https://github.com/gmikeska/libemvault_dev_hsm> |
 
 ## Why namespaced modules
 
