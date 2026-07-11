@@ -1,6 +1,6 @@
 [package]
 name = "emvault"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/gmikeska/emvault"
@@ -28,11 +28,11 @@ test-utils = ["emvault-core/test-utils", "emvault-xpub?/test-utils", "emvault-el
 
 [dependencies]
 thiserror = "2"
-emvault-core       = { version = "0.1.0", path = "../emvault-core" }
-emvault-xpub       = { version = "0.1.0", path = "../emvault-xpub",       optional = true }
-emvault-pkcs11     = { version = "0.1.0", path = "../emvault-pkcs11",     optional = true }
-emvault-elements   = { version = "0.1.0", path = "../emvault-elements",   optional = true }
-emvault-dev-signer = { version = "0.1.0", path = "../emvault-dev-signer", optional = true }
+emvault-core       = { version = "0.2.0", path = "../emvault-core" }
+emvault-xpub       = { version = "0.2.0", path = "../emvault-xpub",       optional = true }
+emvault-pkcs11     = { version = "0.2.0", path = "../emvault-pkcs11",     optional = true }
+emvault-elements   = { version = "0.2.0", path = "../emvault-elements",   optional = true }
+emvault-dev-signer = { version = "0.2.0", path = "../emvault-dev-signer", optional = true }
 
 [lints.clippy]
 pedantic = { level = "warn", priority = -1 }
