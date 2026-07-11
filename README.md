@@ -87,10 +87,10 @@ HSM/Elements dependency stack):
 
 ```toml
 # Bitcoin-only consumer hardware wallets:
-emvault = { version = "0.1", features = ["xpub"] }
+emvault = { version = "0.2", features = ["xpub"] }
 
 # HSM federation with Elements + dev helpers:
-emvault = { version = "0.1", features = ["pkcs11", "elements", "dev-signer"] }
+emvault = { version = "0.2", features = ["pkcs11", "elements", "dev-signer"] }
 ```
 
 ### Prelude

@@ -1,6 +1,6 @@
 //! # emvault
 //!
-//! Umbrella **facade** for the Emerald multi-signature custody platform. This
+//! Umbrella **facade** for the EmVault multi-signature custody platform. This
 //! crate owns no logic of its own; it re-exports [`emvault-core`](emvault_core)
 //! and the feature-gated signer/network backends under stable namespaces so a
 //! consuming application can depend on a single crate (`emvault`) as its public
