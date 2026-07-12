@@ -14,6 +14,9 @@ path = "src/lib.rs"
 default = []
 xpub       = ["dep:emvault-xpub"]
 pkcs11     = ["dep:emvault-pkcs11"]
+# Nodeless Esplora HTTP chain backend (`emvault::core::esplora_sync`): sync +
+# broadcast without a local bitcoind. Pure forward to `emvault-core/esplora`.
+esplora    = ["emvault-core/esplora"]
 # Enabling `elements` turns on the Elements/Liquid surface in core, pulls in the
 # `emvault-elements` companion crate, and — only if `pkcs11` is also enabled —
 # activates the HSM's Elements signing path. The `?/` weak-dep syntax means
