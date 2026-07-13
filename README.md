@@ -79,6 +79,7 @@ HSM/Elements dependency stack):
 | `pkcs11` | HSM-backed signer (`emvault::pkcs11`). |
 | `elements` | Elements/Liquid support (`emvault::elements`); turns on `emvault-core/elements` and forwards the Elements feature into `pkcs11` **only if** that backend is also enabled (weak `?/` dep). |
 | `dev-signer` | Dev/CI HSM helper (`emvault::dev_signer`); implies `pkcs11`. |
+| `esplora` | Nodeless **Esplora + Waterfalls** chain backend, re-exported as `emvault::core::esplora` (forwards `emvault-core/esplora` → the `emvault-esplora` crate). |
 | `test-utils` | Exposes test scaffolding (`MockSigner`, fixtures, the Elements `testkit`) to downstream test suites. |
 
 `emvault::core` and `emvault::config` are always available.
@@ -87,10 +88,10 @@ HSM/Elements dependency stack):
 
 ```toml
 # Bitcoin-only consumer hardware wallets:
-emvault = { version = "0.2", features = ["xpub"] }
+emvault = { version = "0.3", features = ["xpub"] }
 
 # HSM federation with Elements + dev helpers:
-emvault = { version = "0.2", features = ["pkcs11", "elements", "dev-signer"] }
+emvault = { version = "0.3", features = ["pkcs11", "elements", "dev-signer"] }
 ```
 
 ### Prelude
