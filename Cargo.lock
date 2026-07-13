@@ -581,7 +581,7 @@ dependencies = [
 
 [[package]]
 name = "emvault"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "emvault-core",
  "emvault-dev-signer",
@@ -593,13 +593,13 @@ dependencies = [
 
 [[package]]
 name = "emvault-core"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bdk_bitcoind_rpc",
  "bdk_wallet",
  "bitcoin",
  "bitcoincore-rpc",
- "esplora-rs",
+ "emvault-esplora",
  "hex",
  "miniscript",
  "serde",
@@ -612,7 +612,7 @@ dependencies = [
 
 [[package]]
 name = "emvault-dev-signer"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bitcoin",
  "cryptoki",
@@ -628,7 +628,7 @@ dependencies = [
 
 [[package]]
 name = "emvault-elements"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bitcoin",
  "bitcoincore-rpc",
@@ -643,8 +643,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "emvault-esplora"
+version = "0.3.0"
+dependencies = [
+ "bdk_wallet",
+ "bitcoin",
+ "esplora-rs",
+ "hex",
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "emvault-pkcs11"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bdk_wallet",
  "bitcoin",
@@ -662,7 +673,7 @@ dependencies = [
 
 [[package]]
 name = "emvault-xpub"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bip39",
  "bitcoin",
@@ -699,9 +710,9 @@ dependencies = [
 
 [[package]]
 name = "esplora-rs"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df1485453a87c155654110f42278f2102e9bf21f6801c715a901b94ee908ae03"
+checksum = "aef49ae3edef06d8e57333e52dec9740ee449bd23b86cc21dcfa0b7dc4229d6f"
 dependencies = [
  "async-trait",
  "bytes",
@@ -711,6 +722,7 @@ dependencies = [
  "serde_json",
  "thiserror 1.0.69",
  "tokio",
+ "tracing",
  "url",
 ]
 
@@ -2151,7 +2163,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100"
 dependencies = [
  "pin-project-lite",
+ "tracing-attributes",
  "tracing-core",
+]
+
+[[package]]
+name = "tracing-attributes"
+version = "0.1.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7490cfa5ec963746568740651ac6781f701c9c5ea257c58e057f3ba8cf69e8da"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
